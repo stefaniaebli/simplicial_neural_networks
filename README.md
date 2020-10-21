@@ -2,10 +2,9 @@
 
 Stefania Ebli, Michaël Defferrard and Gard Spreemann
 
-The code in this repository implements Simplicial Neural Networks (SNNs) a generalization of Graph Neural Networks (GNNs) to data that live on a class of topological spaces called [simplicial complexes]. These are natural multi-dimensional extensions of graphs that encode not only pairwise relationships but also higher-order interactions between vertices---allowing us to consider richer data, including vector fields and $n$-fold collaboration networks.
-
+The code in this repository implements Simplicial Neural Networks (SNNs) a generalization of Graph Neural Networks (GNNs) to data that live on a class of topological spaces called [simplicial complexes]. These are natural multi-dimensional extensions of graphs that encode not only pairwise relationships but also higher-order interactions between vertices---allowing us to consider richer data, including vector fields and n-fold collaboration networks. We define an appropriate notion of convolution that we leverage to construct the desired convolutional neural networks.The code for SNNs has been implemented in [PyTorch]
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
-
+[PyTorch]: https://pytorch.org
 ## Installation
 
 [![Binder](https://mybinder.org/badge_logo.svg)][binder_lab]
@@ -55,10 +54,10 @@ Please cite the following paper if you use it.
 ```
 @article{simplicial_nn,
   title = {Simplicial Neural Networks},
-  author = {},
+  author = {Ebli, Stefania and Defferrard, Micha\"el and Spreemann, Gard},
   year = {2020},
   archivePrefix = {arXiv},
-  eprint = {19xx.xxxxx},
-  url = {https://arxiv.org/abs/19xx.xxxxx},
+  eprint = {2010.0363},
+  url = {https://arxiv.org/abs/2010.0363},
 }
 ```
