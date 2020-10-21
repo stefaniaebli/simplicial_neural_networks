@@ -1,6 +1,8 @@
 # Simplicial Neural Networks
 
-The code in this repository implements a generalization of Convolutional Neural Networks (CNNs) to [simplicial complexes].
+Stefania Ebli, Michaël Defferrard and Grad Spreemann
+
+The code in this repository implements Simplicial Neural Networks (SNNs) a generalization of Convolutional Neural Networks (CNNs) to [simplicial complexes].
 
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 
@@ -15,8 +17,8 @@ For a local installation, follow the below instructions.
 
 1. Clone this repository.
    ```sh
-   git clone https://github.com/xxx/snn.git
-   cd snn
+   git clone https://github.com/stefaniaebli/simplicial_neural_networks.git 
+   cd simplicial_neural_networks
    ```
 
 2. Create the environment.
@@ -54,7 +56,7 @@ Please cite the following paper if you use it.
 @article{simplicial_nn,
   title = {Simplicial Neural Networks},
   author = {},
-  year = {2019},
+  year = {2020},
   archivePrefix = {arXiv},
   eprint = {19xx.xxxxx},
   url = {https://arxiv.org/abs/19xx.xxxxx},
