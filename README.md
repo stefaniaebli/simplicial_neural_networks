@@ -54,11 +54,15 @@ The below notebooks contain examples and experiments to play with the model.
 Follow the below steps to reproduce the paper's results.
 
 1. **Get the data.**
-   See the [data README](data/README.md) for details.
+      1.1 See the [data README](data/README.md) for details.
 
 2. **Preprocess the data.**
+      2.1 **From a bipartite graph to a simplicial complex with k-cochains** 
+      2.2 **From a simplicial complex to k-degree Laplacians **
 
 3. **Run the experiments.**
+      3.1 **Artificially insert missing data on k-cochains**
+      3.2 **Train SNN to impute missing data on the simplicial comlex**
 
 ## License & citation
 
