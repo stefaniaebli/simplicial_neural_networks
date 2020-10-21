@@ -1,8 +1,8 @@
 # Simplicial Neural Networks
 
-Stefania Ebli, Michaël Defferrard and Grad Spreemann
+Stefania Ebli, Michaël Defferrard and Gard Spreemann
 
-The code in this repository implements Simplicial Neural Networks (SNNs) a generalization of Convolutional Neural Networks (CNNs) to [simplicial complexes].
+The code in this repository implements Simplicial Neural Networks (SNNs) a generalization of Graph Neural Networks (GNNs) to data that live on a class of topological spaces called [simplicial complexes]. These are natural multi-dimensional extensions of graphs that encode not only pairwise relationships but also higher-order interactions between vertices---allowing us to consider richer data, including vector fields and $n$-fold collaboration networks.
 
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 
