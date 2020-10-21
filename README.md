@@ -6,12 +6,22 @@ The code in this repository implements Simplicial Neural Networks (SNNs) a gener
 
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 [PyTorch]: https://pytorch.org
+
+Resources:
+- **paper**: [Simplicial Neural Networks][1]
+- **poster**: [Simplicial Neural Networks: Predicting Collaborations with Simplicial Complexes][2]
+
+[1]:https://arxiv.org/abs/2010.03633
+
+[2]:https://www.dropbox.com/s/nwzbizjiunqk3g6/Ebli.pdf
+
 ## Installation
 
 [![Binder](https://mybinder.org/badge_logo.svg)][binder_lab]
 &nbsp; Click the binder badge to play with the notebooks from your browser without installing anything.
 
 [binder_lab]: https://mybinder.org/v2/gh/xxx/snn/outputs?urlpath=lab
+
 
 For a local installation, follow the below instructions.
 
