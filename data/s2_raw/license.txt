@@ -1,0 +1,127 @@
+
+
+                   Semantic Scholar Dataset License Agreement
+
+                              Non-Commercial Use
+
+THIS ONLINE DATASET LICENSE AGREEMENT ("AGREEMENT") IS BY AND BETWEEN THE ALLEN INSTITUTE
+FOR ARTIFICIAL INTELLIGENCE, LOCATED AT 2157 NORTH NORTHLAKE WAY, SUITE 110, SEATTLE WA 98103
+("AI2" OR "US") AND THE INDIVIDUAL OR LEGAL ENTITY ("CUSTOMER" OR "YOU") WHO IS USING THE
+APPLICABLE DATA MADE AVAILABLE BY AI2 ("DATA") AND GOVERNS ALL USE BY YOU OF THE DATA.
+
+BY ACCESSING THE DATA, YOU EXPRESSLY ACCEPT AND AGREE TO THE TERMS OF THIS AGREEMENT. IF YOU ARE
+AN INDIVIDUAL AGREEING TO THE TERMS OF THIS AGREEMENT ON BEHALF OF AN ENTITY, SUCH AS YOUR EMPLOYER,
+YOU REPRESENT THAT YOU HAVE THE LEGAL AUTHORITY TO BIND THAT ENTITY AND "CUSTOMER" WILL REFER HEREI
+TO SUCH ENTITY. IF YOU DO NOT HAVE SUCH AUTHORITY, OR IF YOU DO NOT AGREE WITH THE TERMS OF THIS
+AGREEMENT, YOU MUST NOT EXECUTE THE ORDER FORM AND YOU ARE NOT GRANTED PERMISSION TO ACCESS OR
+OTHERWISE USE THE DATA.
+
+BY CLICKING THE "I ACCEPT" BUTTON OR BY ACCESSING, DOWNLOADING OR OTHERWISE USING THE DATA, YOU
+SIGNIFY YOUR AGREEMENT TO AND ACCEPTANCE OF THIS AGREEMENT AND ACKNOWLEDGE THAT YOU HAVE READ,
+UNDERSTAND AND AGREE TO BE BOUND BY ITS TERMS. IF YOU ARE AN INDIVIDUAL ACTING ON BEHALF OF
+ENTITY, YOU REPRESENT AND WARRANT THAT YOU HAVE THE AUTHORITY TO ENTER INTO THIS AGREEMENT O
+BEHALF OF THAT ENTITY AND TO LEGALLY BIND THAT ENTITY. IF YOU DO NOT HAVE SUCH AUTHORITY, YOU
+ARE SOLELY RESPONSIBLE FOR ALL ACTS AND OMISSIONS RELATING TO YOUR USE OF THE PRODUCT. IF YOU
+DO NOT ACCEPT THE TERMS OF THIS AGREEMENT, THEN YOU ARE NOT PERMITTED TO, AND YOU MUST NOT ACCESS,
+DOWNLOAD OR OTHERWISE USE THE DATA.
+
+This Agreement, including all referenced documents located at the URLs listed below is effective
+as of the date You download the Data.
+
+1) Definitions.  Capitalized terms used herein have the following definitions
+
+      a) "Data" means any journals, articles, metadata, abstracts, pdfs and full-texts and
+      any other content types provided to You by AI2.
+
+      b) "DOI" means a Digital Object Identifier which is a unique universal identifier
+      associated with a paper, journal or author.
+
+
+2) License Grant.  Effective as of the Effective Date, AI2 grants to You a worldwide,
+perpetual, non-exclusive, non-transferable, non-sublicensable license to use and make derivatives
+of the Data only for Your non-commercial, internal operation and use and subject to the further
+provisions below.
+
+3) Restrictions. The foregoing License is limited.  You may not: (a) copy or use
+the Data in any manner except as expressly permitted in this Agreement; (b) transfer, sell, rent,
+lease, commercialize, lend, distribute, or sublicense the Data to any third party; (c) reverse
+engineer, disassemble, or decompile the Data (except to the extent such restrictions are prohibited
+by law); (d) alter or remove any proprietary notices in the Data; (f) use the Data for any purpose
+that is unlawful or prohibited by this Agreement or otherwise.  If You do not comply with the
+License terms or the foregoing restrictions, AI2 may terminate this Agreement immediately. Further,
+any and all commercial use of the Data is strictly prohibited. Prohibited commercial use includes,
+but is not limited to, selling, leasing, or licensing the Data for monetary or other commercial
+gain, using the Data in connection with business functions or operations, or embedding or installing
+the Data into products for Your own commercial gain or for the commercial gain of third parties.
+If you are uncertain as to whether your contemplated use of the Data is permissible, do not use
+this Data and instead contact AI for further information.
+
+4) Proprietary Rights. Other than the License granted in Section 2 above,
+AI2 and its licensors retain all right, title and interest in and to the Data and all components
+thereof, including all patent, copyright, trademark, and trade secret rights.   You agree and
+acknowledge that any feedback, suggestions, ideas, comments, improvements or other input ("Feedback")
+about the Data provided by You to AI is voluntarily given, and AI shall be free to use the
+Feedback as it sees fit without obligation or restriction of any kind.
+
+5) Warranty. AI2 warrants that it has the right to make the Data available to You
+as provided for in and subject to this Agreement and in accordance with applicable law.  The
+warranties under this Section do not apply to any noncompliance resulting from any use not in
+accordance with this Agreement.  EXCEPT FOR THE LIMITED WARRANTY IN THIS SECTION, THE DATA IS
+PROVIDED "AS IS", WITHOUT ANY WARRANTIES OF ANY KIND.  AI2 DISCLAIMS ANY AND ALL WARRANTIES,
+EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY OF MERCHANTABILITY, AND/OR
+FITNESS FOR A PARTICULAR PURPOSE.
+
+6) Indemnification.
+
+    a) Indemnification by AI2.  AI2 will indemnify You in respect of any third party claims, proceedings,
+    costs or damages, including actual attorneys' fees and court costs and expenses in any such third
+    party action, proceeding or case, and agreed settlements (i)  to the extent that Your authorized
+    use of the Data infringes any patent, or any copyright, trademark or other proprietary right of
+    such third party.  If any settlement requires a non-monetary obligation of an indemnified party
+    (other than ceasing use of the Data), then such settlement will require AI2's prior written consent,
+    which consent will not be unreasonably withheld.
+
+    b) Exclusions.  AI2 will have no liability for any infringement claim to the extent based on Your
+    use of the Data other than in accordance with this Agreement.
+
+7) Limitation of Liability.
+
+    a) Indirect Damages.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EXCEPT AS OTHERWISE PROVIDED
+    SPECIFICALLY IN THIS AGREEMENT, IN NO EVENT WILL EITHER PARTY, ITS AFFILIATES, LICENSORS, OR
+    THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS OR AGENTS BE LIABLE TO THE OTHER
+    PARTY OR TO ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL OR EXEMPLARY
+    DAMAGES OR FOR THE COST OF PROCURING SUBSTITUTE PRODUCTS OR SERVICES ARISING OUT OF OR IN ANY
+    WAY RELATING TO OR IN CONNECTION WITH THIS AGREEMENT EVEN IF ADVISED OF THE POSSIBILITY THEREOF
+    AND REGARDLESS OF THE LEGAL OR EQUITABLE THEORY (CONTRACT, TORT OR OTHERWISE) UPON WHICH THE CLAIM
+    IS BASED.
+
+    b) Aggregate Liability. IN NO EVENT WILL EITHER PARTY'S AGGREGATE LIABILITY FOR DIRECT
+    DAMAGES, FROM ALL CAUSES OF ACTION AND UNDER ALL THEORIES OF LIABILITY, EXCEED $10,000.
+
+    c) Exclusion - Violations of Law.  The limits in Section 7(a) and Section 7(b)
+    above do not apply to damages incurred by a party due to the other party's violation of applicable laws.
+
+8) Compliance with Laws.  Each party will comply with all applicable local, state, national, and
+international laws and regulations with respect to AI2's license and Your use of the Data.
+
+9) General.
+
+    a) If for any reason a court of competent jurisdiction finds any provision of this Agreement
+    invalid or unenforceable, that provision of the Agreement will be enforced to the maximum
+    extent permissible and the other provisions of this Agreement will remain in full force and effect.
+
+    b) The failure by either party to enforce any provision of this Agreement will not constitute a
+    waiver of future enforcement of that or any other provision. All waivers must be in writing
+    and signed by both parties.
+
+    c) All notices permitted or required under this Agreement will be in writing and will be delivered
+    in person, by confirmed facsimile, overnight courier service or mailed by first class, registered
+    or certified mail, postage prepaid. Such notice will be deemed to have been given upon receipt.
+
+    d) This Agreement will be governed by the laws of the State of Washington, U.S.A., excluding
+    its conflicts of law rules.
+
+    e) Any amendment or modification to the Agreement must be in writing signed by both parties.
+
+    f) In the event of a conflict between this Agreement and other applicable documents between the
+    Parties, the terms of this Agreement will apply and will take precedence.
