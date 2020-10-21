@@ -30,7 +30,7 @@ def load(columns):
     return biadjacency, papers[columns]
 
 
-def bipart2simplex(bipartite,weights_x,indices_x, dimension=3):
+def bipart2simplex(bipartite,weights_x,indices_x=None,dimension=3):
     """Build a Gudhi Simplex Tree from the bipartite graph X-Y by projection on Y and extract the
     features corresponding to maximal dimensional simplices.
     Parameters
@@ -40,7 +40,7 @@ def bipart2simplex(bipartite,weights_x,indices_x, dimension=3):
     weights_x : ndarray
         Array of size bipartite.shape[0], containing the weights on the node of X
     indices_x = array
-        Array of the indices of the X nodes to restrict to
+        Array of the indices of the X nodes to restrict to, default: all nodes of X
     dimension: int
         maximal dimension of the simplicial complex = maximal number of individuals collaborating.
     Returns
@@ -52,6 +52,9 @@ def bipart2simplex(bipartite,weights_x,indices_x, dimension=3):
     """
     signals_top = [dict() for _ in range(dimension+1)]
     simplex_tree =gudhi.SimplexTree()
+    if np.all(indices_x)==None:
+        indices_x=np.arange(bipartite.shape[0])
+
     Al=bipartite.tolil()
     Al.rows[indices_x]
     for j,authors in enumerate(Al.rows[indices_x]):
@@ -117,7 +120,7 @@ def build_cochains(simplex_tree,signals_top,function=np.sum):
     return signal,signals_top
 
 
-def bipart2simpcochain(bipartite,weights_x,function=np.sum,indices_x,dimension=3):
+def bipart2simpcochain(bipartite,weights_x,indices_x=None,function=np.sum,dimension=3):
     """From a collaboration bipartite graph X-Y and its weights on X to a
     collaboration simplicial complex and its collaboration values on the
     simplices.
@@ -131,7 +134,7 @@ def bipart2simpcochain(bipartite,weights_x,function=np.sum,indices_x,dimension=3
     function : callable
         Functions that will aggregate the features to build the k-coachains, default=np.sum
     indices_x : array
-        Array of the indices of the X nodes to restrict to
+        Array of the indices of the X nodes to restrict to, default = all nodes of X
     dimension : int
         Maximal dimension of the simplicial complex.
 
@@ -162,47 +165,48 @@ def save(simplices, cochains):
 def test():
     r"""Test the transformation of a bipartite graph to a collaboration complex."""
     biadjacency = coo_matrix([
+        [1, 1, 1, 0],
+        [1, 1, 0, 0],
+        [1, 0, 0, 1],
         [0, 0, 1, 1],
-        [0, 0, 1, 0],
-        [0, 0, 1, 0],
-        [1, 0, 1, 1],
     ])
-    papers = pd.DataFrame([[3, 2, -7, 4], [3, 2, -7, 4]]).T
+    number_citations =np.array([100,50,10,4])
     indices=np.arange(biadjacency.shape[0])
-    with open(os.devnull, 'w') as devnull:
-        with contextlib.redirect_stdout(devnull):
-            simplices, cochains,signals_top = bipart2simpcochain(
-                    biadjacency, papers,indices_x=indices,function=np.sum )
+    simplices, cochains,signals_top = bipart2simpcochain(biadjacency, number_citations,function=np.sum )
 
     cochains_true = [
-        {
-            frozenset([0]): [4, 4],
-            frozenset([2]): [4 + 3 - 7 + 2, 16],
-            frozenset([3]): [4 + 3, 7],
+        {   frozenset({0}): 100+50+10,
+            frozenset({1}): 100+50,
+            frozenset({2}): 100+4,
+            frozenset({3}): 10+4
         },
-        {
-            frozenset([0, 2]): [4, 4],
-            frozenset([0, 3]): [4, 4],
-            frozenset([2, 3]): [4 + 3, 7],
+        {   frozenset({0, 1}): 100+50,
+            frozenset({0, 2}): 100,
+            frozenset({1, 2}): 100,
+            frozenset({0, 3}): 10,
+            frozenset({2, 3}): 4
         },
+
         {
-            frozenset([0, 2, 3]): [4, 4],
-        },
+            frozenset({0, 1, 2}): 100
+        }
     ]
     simplices_true = [
         {
-            frozenset([0]): 0,
-            frozenset([2]): 1,
-            frozenset([3]): 2,
+            frozenset({0}): 0,
+            frozenset({1}): 1,
+            frozenset({2}): 2,
+            frozenset({3}): 3
         },
         {
-            frozenset([0, 2]): 0,
-            frozenset([0, 3]): 1,
-            frozenset([2, 3]): 2,
+            frozenset({0, 1}): 0,
+            frozenset({0, 2}): 1,
+            frozenset({0, 3}): 2,
+            frozenset({1, 2}): 3,
+            frozenset({2, 3}): 4
         },
         {
-            frozenset([0, 2, 3]): 0,
-        },
+            frozenset({0, 1, 2}): 0}
     ]
     assert cochains == cochains_true
     assert simplices == simplices_true
@@ -211,18 +215,13 @@ def test():
 if __name__ == '__main__':
     test()
 
-    # List of features to keep, with the corresponding aggregation function.
-    # Python functions are faster than numpy as we aggregate over small lists.
-    concatenations = {
-        'citations_1994': sum,
-        'citations_1999': sum,
-        'citations_2004': sum,
-        'citations_2009': sum,
-        'citations_2014': sum,
-        'citations_2019': sum,
-        'references': sum,
-        'year': lambda x: sum(x) / len(x),
-    }
+"""
+    List of features to keep, with the corresponding aggregation function.
+    Python functions are faster than numpy as we aggregate over small lists.
+""""
+    adjacency = scipy.sparse.load_npz('./preproces/paper_author_biadjacency.npz')
+    citations = np.load('./preproces/papers_citations_2019.npy')
+    downsample_papers=np.load('./preproces/downsample_'+str(s_node)+'.npy')
 
     start = time.time()
     def timeit(name):
@@ -230,7 +229,7 @@ if __name__ == '__main__':
 
     biadjacency, papers = load(concatenations.keys())
     timeit('load')
-    simplices, cochains = bipart2simpcochain(biadjacency, papers, concatenations.values(), dimension=10)
+    simplices, cochains = bipart2simpcochain(biadjacency, papers, indices_x=downsample_papers, dimension=10)
     timeit('process')
     save(simplices, cochains)
     timeit('total')
