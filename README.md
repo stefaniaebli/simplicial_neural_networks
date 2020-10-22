@@ -55,7 +55,7 @@ Follow the below steps to reproduce the paper's results.
 
 1. **Get the data.**
 
-      1.1 <span style="color:red">some **Link to Michaël repository** text</span>
+      1.1  **Link to Michaël repository** 
 
 2. **Preprocess the data.**
 
