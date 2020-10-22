@@ -55,13 +55,18 @@ Follow the below steps to reproduce the paper's results.
 
 1. **Get the data.**
 
-      1.1 See the [data README](data/README.md) for details.
+      1.1 <span style="color:red">some **Link to Michaël repository** text</span>
 
 2. **Preprocess the data.**
 
       2.1 From a bipartite graph to a simplicial complex with k-cochains
-      
+   ```sh
+     bipartite2complex.py
+   ```
       2.2 From a simplicial complex to k-degree Laplacians 
+   ```sh
+     complex2laplacians.py
+   ```
 
 3. **Run the experiments.**
 
