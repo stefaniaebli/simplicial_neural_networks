@@ -85,22 +85,23 @@ The already preprocesses data can be found in the folder ``` ./data/s2_processed
        ./input/s2_4_bipartite_to_downsampled.py
     ```
     3.2 From a bipartite graph to a simplicial complex with k-cochains
-     ```sh
-          ./input/s2_5_bipartite_to_complex.py
-     ```     
+    ```sh
+       ./input/s2_5_bipartite_to_complex.py
+    ```     
     3.3 From a simplicial complex to k-degree Laplacians 
-      ```sh
-          ./input/s2_6_complex_to_laplacians.py
-      ```       
+    ```sh
+       ./input/s2_6_complex_to_laplacians.py
+    ```       
     3.5 Artificially insert missing data on k-cochains
-   
-   
-
+    ```sh
+       ./input/s2_7_bipartite_to_downsampled.py
+    ```      
 4. **Run the experiments.**
 
-      
-      4.1 Train SNN to impute missing data on the simplicial comlex
-
+     4.1 Train SNN to impute missing data on the simplicial comlex
+    ```sh
+       ./experiments/learn_citations.py
+    ``` 
 ## License & citation
 
 The content of this repository is released under the terms of the [MIT license](LICENSE.txt).
