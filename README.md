@@ -103,7 +103,7 @@ The already preprocesses data can be found in the folder ``` ./data/s2_processed
 
      4.1 Train SNN to impute missing data on the simplicial comlex
     ```sh
-       ./experiments/learn_citations.py
+       ./experiments/learn_citations.py ./input ./output 150250 30
     ``` 
 ## License & citation
 
