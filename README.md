@@ -57,7 +57,7 @@ Follow the below steps to reproduce the paper's results.
 
       1.1  See the [data README] for details
       
-The data can be found in the folder ``` sh ./data/s2_raw ```.
+The data can be found in the folder ``` ./data/s2_raw ```.
 
 
 2. **Preprocess the data.**
@@ -75,29 +75,24 @@ The data can be found in the folder ``` sh ./data/s2_raw ```.
       ./data/s2_3_bipartite_to_graphs.py
    ```
    
-The already preprocesses data can be found in the folder ``` sh ./data/s2_processed ```.
+The already preprocesses data can be found in the folder ``` ./data/s2_processed ```.
 
 
 3. **Input to SNNS**
      
-     3.1 Downsample the bipartite graph to have a connected simplicial complex
-   
-  ```sh
-     ./input/s2_4_bipartite_to_downsampled.py
-  ```  
-  
-   3.2 From a bipartite graph to a simplicial complex with k-cochains
-      
-   ```sh
-     ./input/s2_5_bipartite_to_complex.py
-   ```
-   3.3 From a simplicial complex to k-degree Laplacians 
-   
-   ```sh
-     ./input/s2_6_complex_to_laplacians.py
-   ```
-   
-   3.5 Artificially insert missing data on k-cochains
+    3.1 Downsample the bipartite graph to have a connected simplicial complex  
+    ```sh
+       ./input/s2_4_bipartite_to_downsampled.py
+    ```
+    3.2 From a bipartite graph to a simplicial complex with k-cochains
+     ```sh
+          ./input/s2_5_bipartite_to_complex.py
+     ```     
+    3.3 From a simplicial complex to k-degree Laplacians 
+      ```sh
+          ./input/s2_6_complex_to_laplacians.py
+      ```       
+    3.5 Artificially insert missing data on k-cochains
    
    
 
