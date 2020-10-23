@@ -19,8 +19,8 @@ class MySCNN(nn.Module):
         assert(colors > 0)
         self.colors = colors
 
-        num_filters = 20
-        variance = 0.1 #0.01
+        num_filters = 30 #20
+        variance = 0.01 #0.001
 
         # Degree 0 convolutions.
         self.C0_1 = scnn.scnn.SimplicialConvolution(5, self.colors, num_filters*self.colors, variance=variance)
@@ -37,25 +37,6 @@ class MySCNN(nn.Module):
         self.C2_2 = scnn.scnn.SimplicialConvolution(5, num_filters*self.colors, num_filters*self.colors, variance=variance)
         self.C2_3 = scnn.scnn.SimplicialConvolution(5, num_filters*self.colors, self.colors, variance=variance)
 
-        # From degree 0 to 1.
-        #self.D01_1 = scnn.scnn.Coboundary(Ds[0], self.colors, num_filters*self.colors, variance=variance)
-        #self.D01_2 = scnn.scnn.Coboundary(Ds[0], num_filters*self.colors, num_filters*self.colors, variance=variance)
-        #self.D01_3 = scnn.scnn.Coboundary(Ds[0], num_filters*self.colors, self.colors, variance=variance)
-
-        # From degree 1 to 0.
-        #self.D10_1 = scnn.scnn.Coboundary(adDs[0], self.colors, num_filters*self.colors, variance=variance)
-        #self.D10_2 = scnn.scnn.Coboundary(adDs[0], num_filters*self.colors, num_filters*self.colors, variance=variance)
-        #self.D10_3 = scnn.scnn.Coboundary(adDs[0], num_filters*self.colors, self.colors, variance=variance)
-
-        # From degree 1 to 2.
-        #self.D12_1 = scnn.scnn.Coboundary(Ds[1], self.colors, num_filters*self.colors, variance=variance)
-        #self.D12_2 = scnn.scnn.Coboundary(Ds[1], num_filters*self.colors, num_filters*self.colors, variance=variance)
-        #self.D12_3 = scnn.scnn.Coboundary(Ds[1], num_filters*self.colors, self.colors, variance=variance)
-
-        # From degree 2 to 1.
-        #self.D21_1 = scnn.scnn.Coboundary(adDs[1], self.colors, num_filters*self.colors, variance=variance)
-        #self.D21_2 = scnn.scnn.Coboundary(adDs[1], num_filters*self.colors, num_filters*self.colors, variance=variance)
-        #self.D21_3 = scnn.scnn.Coboundary(adDs[1], num_filters*self.colors, self.colors, variance=variance)
 
 
     def forward(self, Ls, Ds, adDs, xs):
@@ -106,12 +87,12 @@ def main():
     topdim = 2
 
 
-    laplacians = np.load('%s_laplacians.npy' %(prefix))
-    boundaries = np.load('%s_boundaries.npy'%(prefix))
+    laplacians = np.load('%s_laplacians.npy' %(prefix),allow_pickle=True)
+    boundaries = np.load('%s_boundaries.npy'%(prefix),allow_pickle=True)
 
 
 
-    Ls =[scnn.scnn.coo2tensor(laplacians[i]) for i in range(topdim+1)] #####scnn.chebyshev.normalize ?
+    Ls =[scnn.scnn.coo2tensor(scnn.chebyshev.normalize(laplacians[i],half_interval=True)) for i in range(topdim+1)] #####scnn.chebyshev.normalize ?
     Ds=[scnn.scnn.coo2tensor(boundaries[i].transpose()) for i in range(topdim+1)]
     adDs=[scnn.scnn.coo2tensor(boundaries[i]) for i in range(topdim+1)]
 
@@ -135,13 +116,13 @@ def main():
     print("Total number of parameters: %d" %(num_params))
 
 
-    masks_all_deg = np.load('%s_mask_all_deg.npy'%(prefix)) ## positive mask= indices that we keep ##1 mask #entries 0 degree
+    masks_all_deg = np.load('%s_random_mask_loss_20.npy'%(prefix),allow_pickle=True) ## positive mask= indices that we keep ##1 mask #entries 0 degree
     masks=[list(masks_all_deg[i].values()) for i in range(len(masks_all_deg))]
 
     losslogf = open("%s/loss.txt" %(logdir), "w")
 
     cochain_target_alldegs = []
-    signal = np.load('%s_cohains.npy' %(prefix))
+    signal = np.load('%s_cohains_target.npy' %(prefix),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
         cochain_target = torch.zeros((batch_size, 1, len(raw_data[d])), dtype=torch.float, requires_grad = False)
@@ -151,7 +132,7 @@ def main():
         cochain_target_alldegs.append(cochain_target)
 
     cochain_input_alldegs = []
-    signal = np.load('%s_cohains.npy'%(prefix))
+    signal = np.load('%s_random_cohains_input.npy'%(prefix),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
 
@@ -170,7 +151,7 @@ def main():
 
     print([float(len(masks[d]))/float(len(cochain_target_alldegs[d][0,0,:])) for d in range(0,2+1)])
 
-    for i in range(0, 80):
+    for i in range(0, 1050):
         xs = [cochain_input.clone() for cochain_input in cochain_input_alldegs]
 
         optimizer.zero_grad()
@@ -209,6 +190,9 @@ def main():
         optimizer.step()
 
     losslogf.close()
+
+    name_networks=['C0_1,C0_2','C0_3','C1_1,C1_2','C1_3', 'C2_1,C2_2','C2_3']
+
 
 
 if __name__ == "__main__":
