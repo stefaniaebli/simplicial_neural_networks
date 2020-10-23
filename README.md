@@ -49,7 +49,7 @@ For a local installation, follow the below instructions.
 
 The below notebooks contain examples and experiments to play with the model.
 
-- 
+- coming soon.
 
 
 ## Reproducing the results of the paper
