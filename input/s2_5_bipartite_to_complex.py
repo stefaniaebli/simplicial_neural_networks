@@ -83,9 +83,10 @@ def build_cochains(simplex_tree,signals_top,function=np.sum):
 
     Returns
     -------
-    signals :
-        k-cochains = List of dictionaries of simplices of order k and their collaboration
-        value.
+    signals : list of dictionaries
+        List of dictionaries, one per dimension k.
+        The dictionary's keys are the k-simplices. The
+        dictionary's values are the k-cochains
     signals_top:
         Features for every maximal dimensional simplex
     """
@@ -130,11 +131,14 @@ def bipart2simpcochain(bipartite,weights_x,indices_x=None,function=np.sum,dimens
 
     Returns
     -------
-    simplices:
-        List of dictionaries of simplices of order k and their indices.
-    cochains:
-        List of dictionaries of simplices of order k and their collaboration
-        value.
+    simplices: list of dictionaries
+        List of dictionaries, one per dimension k.
+        The dictionary's keys are the k-simplices. The
+        dictionary's values are their indices
+    cochains:list of dictionaries
+        List of dictionaries, one per dimension k.
+        The dictionary's keys are the k-simplices. The
+        dictionary's values are the k-cochains
     signals_top:
         Features for every maximal dimensional simplex
     """
@@ -211,6 +215,6 @@ if __name__ == '__main__':
 
     simplices, cochains, signals_top = bipart2simpcochain(adijacency, citations, indices_x=downsample_papers, dimension=10)
     timeit('process')
-    np.save('./input/authors_collaboration_cochains_'+str(starting_node)+'.npy', cochains)
-    np.save('./input/authors_collaboration_simplices_'+str(starting_node)+'.npy', simplices)
+    np.save('./input/'+str(starting_node)+'_cochains.npy', cochains)
+    np.save('./input/'+str(starting_node)+'_simplices.npy', simplices)
     timeit('total')

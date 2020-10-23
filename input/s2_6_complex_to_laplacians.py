@@ -3,7 +3,7 @@
 
 """
 Input: Simplicial complex of dimension d
-Output: k-order Laplacians up to dimension d 
+Output: k-order Laplacians up to dimension d
 """
 
 
@@ -30,7 +30,7 @@ def build_boundaries(simplices):
     Returns
     -------
     boundaries: list of sparse matrices
-       List of boundary operators, one per dimension.
+       List of boundary operators, one per dimension: i-th boundary is in i-th position
     """
     boundaries = list()
     for d in range(1, len(simplices)):
@@ -60,7 +60,7 @@ def build_laplacians(boundaries):
     Returns
     -------
     laplacians: list of sparse matrices
-       List of Laplacian operators, one per dimension.
+       List of Laplacian operators, one per dimension: laplacian of degree i is in the i-th position
     """
     laplacians = list()
     up = coo_matrix(boundaries[0] @ boundaries[0].T)
@@ -77,7 +77,7 @@ def build_laplacians(boundaries):
 if __name__ == '__main__':
 
     starting_node=150250
-    simplices=np.load('./input/authors_collaboration_simplices_'+str(starting_node)+'.npy', simplices)
+    simplices=np.load('./input/'+str(starting_node)+'_simplices.npy', simplices)
 
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
@@ -87,5 +87,6 @@ if __name__ == '__main__':
     laplacians=build_laplacians(boundaries)
 
     timeit('process')
-    np.save('./input/laplacians_'+str(starting_node)+'.npy',laplacians)
+    np.save('./input/'+str(starting_node)+'_laplacians.npy',laplacians)
+    np.save('./input/'+str(starting_node)+'_boundaries.npy',boundaries)
     timeit('total')

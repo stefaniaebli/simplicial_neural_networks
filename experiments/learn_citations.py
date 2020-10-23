@@ -79,16 +79,18 @@ def main():
     np.random.seed(1337)
 
 
-    prefix = sys.argv[1]
+    prefix = sys.argv[1] ##input
 
-    logdir = sys.argv[2]
+    logdir = sys.argv[2] ##output
+    starting_node=sys.argv[3]
+    percenatge_missing_values=sys.argv[4]
     cuda = False
 
     topdim = 2
 
 
-    laplacians = np.load('%s_laplacians.npy' %(prefix),allow_pickle=True)
-    boundaries = np.load('%s_boundaries.npy'%(prefix),allow_pickle=True)
+    laplacians = np.load('%s/'+str(starting_node)+'_laplacians.npy' %(prefix),allow_pickle=True)
+    boundaries = np.load('%s/'+str(starting_node)+'_boundaries.npy'%(prefix),allow_pickle=True)
 
 
 
@@ -116,13 +118,13 @@ def main():
     print("Total number of parameters: %d" %(num_params))
 
 
-    masks_all_deg = np.load('%s_random_mask_loss_20.npy'%(prefix),allow_pickle=True) ## positive mask= indices that we keep ##1 mask #entries 0 degree
+    masks_all_deg = np.load('%s/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_known_values.npy'%(prefix),allow_pickle=True) ## positive mask= indices that we keep ##1 mask #entries 0 degree
     masks=[list(masks_all_deg[i].values()) for i in range(len(masks_all_deg))]
 
     losslogf = open("%s/loss.txt" %(logdir), "w")
 
     cochain_target_alldegs = []
-    signal = np.load('%s_cohains_target.npy' %(prefix),allow_pickle=True)
+    signal = np.load('%s/'+str(starting_node)+'_cochains.npy' %(prefix),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
         cochain_target = torch.zeros((batch_size, 1, len(raw_data[d])), dtype=torch.float, requires_grad = False)
@@ -132,7 +134,7 @@ def main():
         cochain_target_alldegs.append(cochain_target)
 
     cochain_input_alldegs = []
-    signal = np.load('%s_random_cohains_input.npy'%(prefix),allow_pickle=True)
+    signal = np.load('%s/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_input_damaged.npy'%(prefix),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
 
