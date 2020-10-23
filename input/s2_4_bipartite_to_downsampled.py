@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 """
 Input: collaboration bipartite graph X-Y and weights on X.
 Output: X'= Downsample set of nodes of X (from bipartite graph X-Y) such that each node connects to at most 10 nodes in Y
@@ -55,7 +54,7 @@ def starting_node_random_walk(bipartite,weights_x, min_weight=100, max_dim=10 ):
     copy_seed=np.copy(seeds_papers)
     shuffle(copy_seed)
     start=copy_seed[0]
-    return start
+    return int(start)
 
 
 
@@ -119,3 +118,26 @@ def subsample_node_x(adjaceny_graph_x,bipartite,weights_x, min_weight=5, max_dim
         p=np.unique(final)
         list_seeds.append(new_start)
     return p
+
+
+    if __name__ == '__main__':
+        test()
+
+
+
+        adjacency_papers = sparse.load_npz('papers_adjacency.npz')
+        adjacency = scipy.sparse.load_npz('./preproces/paper_author_biadjacency.npz')
+        papers = pd.read_csv('./data/s2_processed/papers.csv', index_col=0)
+        citations=np.array(papers['citations_2019'])
+
+
+        def timeit(name):
+            print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
+
+        starting_node=starting_node_random_walk(adjacency,weights_x=citations, min_weight=100, max_dim=10 )
+        print("The starting node of the random walk has ID {}".format(starting_node))
+        downsample= subsample_node_x(adjaceny_papers,adjacency,weights_x=citations, min_weight=5, max_dim=10,length_walk=80)
+
+        timeit('process')
+        np.save('./input/downsampled_'+str(starting_node)+'.npy',downsample)
+        timeit('total')

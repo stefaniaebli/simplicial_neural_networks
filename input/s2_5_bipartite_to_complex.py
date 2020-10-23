@@ -18,16 +18,6 @@ from scipy.sparse import coo_matrix
 from random import shuffle
 
 
-def load(columns):
-    biadjacency = sparse.load_npz('s2_processed/paper_author_biadjacency.npz')
-    # papers = np.load('s2_processed/papers_features.npy')
-    papers = pd.read_csv('s2_processed/papers.csv', index_col=0)
-    print('loading:')
-    print('  bipartite: {:,} papers, {:,} authors, {:,} edges'.format(
-        *biadjacency.shape, biadjacency.nnz))
-    print('  paper features: {:,} papers, {:,} features'.format(*papers.shape))
-    print('                  keeping {} features'.format(len(columns)))
-    return biadjacency, papers[columns]
 
 
 def bipart2simplex(bipartite,weights_x,indices_x=None,dimension=3):
@@ -153,14 +143,7 @@ def bipart2simpcochain(bipartite,weights_x,indices_x=None,function=np.sum,dimens
     cochains,signals_top=build_cochains(st,v,function)
     return simplices, cochains,signals_top
 
-def save(simplices, cochains):
-    print('saving:')
-    sizes = [len(s) for s in simplices]
-    for k, size in enumerate(sizes):
-        print(f'  {size:,} {k}-simplices')
-    print('  {:,} simplices in total'.format(sum(sizes)))
-    np.save('s2_processed/authors_collaboration_cochains.npy', cochains)
-    np.save('s2_processed/authors_collaboration_simplices.npy', simplices)
+
 
 def test():
     r"""Test the transformation of a bipartite graph to a collaboration complex."""
@@ -215,21 +198,19 @@ def test():
 if __name__ == '__main__':
     test()
 
-"""
-    List of features to keep, with the corresponding aggregation function.
-    Python functions are faster than numpy as we aggregate over small lists.
-""""
+    starting_node=150250
     adjacency = scipy.sparse.load_npz('./preproces/paper_author_biadjacency.npz')
-    citations = np.load('./preproces/papers_citations_2019.npy')
-    downsample_papers=np.load('./preproces/downsample_'+str(s_node)+'.npy')
+    papers = pd.read_csv('./data/s2_processed/papers.csv', index_col=0)
+    citations=np.array(papers['citations_2019'])
+    downsample_papers=np.load('./input/downsampled_'+str(starting_node)+'.npy')
 
-    start = time.time()
+
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
-    biadjacency, papers = load(concatenations.keys())
-    timeit('load')
-    simplices, cochains = bipart2simpcochain(biadjacency, papers, indices_x=downsample_papers, dimension=10)
+
+    simplices, cochains, signals_top = bipart2simpcochain(adijacency, citations, indices_x=downsample_papers, dimension=10)
     timeit('process')
-    save(simplices, cochains)
+    np.save('./input/authors_collaboration_cochains_'+str(starting_node)+'.npy', cochains)
+    np.save('./input/authors_collaboration_simplices_'+str(starting_node)+'.npy', simplices)
     timeit('total')

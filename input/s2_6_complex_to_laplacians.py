@@ -2,8 +2,8 @@
 #!/usr/bin/env python3
 
 """
-Input: Simplicial complex
-Output: k-order Laplacians
+Input: Simplicial complex of dimension d
+Output: k-order Laplacians up to dimension d 
 """
 
 
@@ -13,15 +13,6 @@ from scipy.sparse import coo_matrix
 from random import shuffle
 
 import time
-
-def load():
-    simplices = np.load('s2_processed/authors_collaboration_simplices.npy')
-    cochains = np.load('s2_processed/authors_collaboration_cochains.npy')
-    print('loading:')
-    print(f'  {len(cochains)}-dimensional simplicial complex')
-    sizes = np.array([len(s) for s in simplices])
-    print('  {:,} simplices in total'.format(np.sum(sizes)))
-    return simplices, cochains
 
 
 def build_boundaries(simplices):
@@ -81,3 +72,20 @@ def build_laplacians(boundaries):
     down = boundaries[-1].T @ boundaries[-1]
     laplacians.append(coo_matrix(down))
     return laplacians
+
+
+if __name__ == '__main__':
+
+    starting_node=150250
+    simplices=np.load('./input/authors_collaboration_simplices_'+str(starting_node)+'.npy', simplices)
+
+    def timeit(name):
+        print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
+
+
+    boundaries=build_boundaries(simplices)
+    laplacians=build_laplacians(boundaries)
+
+    timeit('process')
+    np.save('./input/laplacians_'+str(starting_node)+'.npy',laplacians)
+    timeit('total')

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Input: Simplicial complex , k-ccochains and percentage of missing data
+Input: Simplicial complex , k-cochains and percentage of missing data
 Output: k-cochains where the percentage of missing data has been replaced by a placehold values
 """
 
