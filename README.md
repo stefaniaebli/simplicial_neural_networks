@@ -75,7 +75,7 @@ The data can be found in the folder ``` ./data/s2_raw ```.
    ```
    2.3 Project the bipartite graph
     ```sh
-      python ./data/s2_3_bipartite_to_graphs.py
+       python ./data/s2_3_bipartite_to_graphs.py
    ```
    
 The already preprocesses data can be found in the folder ``` ./data/s2_processed ```.
@@ -84,27 +84,27 @@ The already preprocesses data can be found in the folder ``` ./data/s2_processed
 3. **Input to SNNS**
      
     3.1 Downsample the bipartite graph to have a connected simplicial complex  
-    ```sh
-       python ./input/s2_4_bipartite_to_downsampled.py
-    ```
+   ```sh
+      python ./input/s2_4_bipartite_to_downsampled.py
+   ```
     3.2 From a bipartite graph to a simplicial complex with k-cochains
-    ```sh
-       python ./input/s2_5_bipartite_to_complex.py
-    ```     
+   ```sh
+      python ./input/s2_5_bipartite_to_complex.py
+   ```     
     3.3 From a simplicial complex to k-degree Laplacians 
-    ```sh
-       python ./input/s2_6_complex_to_laplacians.py
-    ```       
+   ```sh
+      python ./input/s2_6_complex_to_laplacians.py
+   ```       
     3.5 Artificially insert missing data on k-cochains
-    ```sh
-       python ./input/s2_7_bipartite_to_downsampled.py
-    ```      
+   ```sh
+      python ./input/s2_7_cochains_to_missingdata.py
+   ```      
 4. **Run the experiments.**
 
      4.1 Train SNN to impute missing data on the simplicial comlex
-    ```sh
-       python ./experiments/learn_citations.py ./input ./output 150250 30
-    ``` 
+   ```sh
+      python ./experiments/learn_citations.py ./input .experiments/output 150250 30
+   ``` 
 ## License & citation
 
 The content of this repository is released under the terms of the [MIT license](LICENSE.txt).
