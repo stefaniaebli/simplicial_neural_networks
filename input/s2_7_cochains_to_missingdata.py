@@ -11,16 +11,17 @@ from scipy import sparse
 from scipy.sparse import coo_matrix
 from random import shuffle
 
+import time
 
-def build_missing_values(percentage_missing_values,simplices,max_dim=10):
 
-"""The functions randomly deletes a given percenatge of the values of simplices in each dimension
+def build_missing_values(simplices,percentage_missing_values,max_dim=10):
+
+    """
+    The functions randomly deletes a given percenatge of the values of simplices in each dimension
     of a simplicial complex.
 
     Parameters
     ----------
-    percenatge_missing_values: integer
-        Percentage of values missing
 
     simplices: list of dictionaries
         List of dictionaries, one per dimension d. The size of the dictionary
@@ -28,6 +29,9 @@ def build_missing_values(percentage_missing_values,simplices,max_dim=10):
         + 1) of the 0-simplices that constitute the d-simplices. The
         dictionary's values are the indexes of the simplices in the boundary
         and Laplacian matrices.
+
+    percenatge_missing_values: integer
+        Percentage of values missing
 
     max_dim: integer
         maximal dimension of the simplices to be considered.
@@ -40,7 +44,7 @@ def build_missing_values(percentage_missing_values,simplices,max_dim=10):
         The dictionary's values are the indexes of the simplices in the boundary
         and Laplacian matrices.
 
-"""
+    """
     missing_values = [dict() for _ in range(max_dim+1)]
     for i in range(max_dim+1):
         simp=list(simplices[i].keys())
@@ -56,7 +60,8 @@ def build_missing_values(percentage_missing_values,simplices,max_dim=10):
 ###craete input cochain by substituing median values in unseen collaboration
 def build_damaged_dataset(cochains,missing_values,function=np.median):
 
-"""The function replaces the missing values in the dataset with a value inferred
+    """
+    The function replaces the missing values in the dataset with a value inferred
     from the known data (eg the missing values are replaced buy the median or median
     or mean of the known values).
 
@@ -83,7 +88,7 @@ def build_damaged_dataset(cochains,missing_values,function=np.median):
         The dictionary's values are the d-cochains where the damaged portion has been replaced
         by the given function value.
 
-"""
+    """
     ##Find median value
     max_dim=len(cochains)
     signal = np.copy(cochains)
@@ -108,7 +113,8 @@ def build_damaged_dataset(cochains,missing_values,function=np.median):
 
 ###Inices and values of the "seen" simplices
 def built_known_values(missing_values,simplices):
-"""The functions return the not missing simplices and cochains in each dimension
+    """
+    The functions return the not missing simplices and cochains in each dimension
 
 
     Parameters
@@ -132,7 +138,7 @@ def built_known_values(missing_values,simplices):
         List of dictionaries, one per dimension d. The dictionary's keys are not missing d-simplices.
         The dictionary's values are their cochains.
 
-"""
+    """
     max_dim=len(simplices)
 
     known_values = [dict() for _ in range(max_dim+1)]
@@ -147,27 +153,23 @@ def built_known_values(missing_values,simplices):
 
 
 
-    if __name__ == '__main__':
-        test()
+if __name__ == '__main__':
+    start = time.time()
+    def timeit(name):
+        print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
+    starting_node=150250
+    percentage_missing_values=30
 
-        starting_node=150250
-        percentage_missing_values=30
+    cochains=np.load('./input/'+str(starting_node)+'_cochains.npy')
+    simplices=np.load('./input/'+str(starting_node)+'_simplices.npy')
 
-        cochains=np.load('./input/'+str(starting_node)+'_cochains.npy')
-        simplices=np.load('./input/'+str(starting_node)+'_simplices.npy')
-
-
-
-        def timeit(name):
-            print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
-
-        missing_values=build_missing_values(percentage_missing_values=30,simplices,max_dim=10)
-        damaged_dataset=build_damaged_dataset(cochains,missing_values,function=np.median)
-        known_values=built_known_values(missing_values,simplices)
+    missing_values=build_missing_values(simplices,percentage_missing_values=30,max_dim=10)
+    damaged_dataset=build_damaged_dataset(cochains,missing_values,function=np.median)
+    known_values=built_known_values(missing_values,simplices)
 
 
-        timeit('process')
-        np.save('./input/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_missing_values.npy',missing_values)
-        np.save('./input/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_input_damaged.npy',damaged_dataset)
-        np.save('./input/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_known_values.npy',known_values)
-        timeit('total')
+    timeit('process')
+    np.save('./input/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_missing_values.npy',missing_values)
+    np.save('./input/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_input_damaged.npy',damaged_dataset)
+    np.save('./input/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_known_values.npy',known_values)
+    timeit('total')

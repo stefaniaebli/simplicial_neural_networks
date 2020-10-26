@@ -201,19 +201,20 @@ def test():
 
 if __name__ == '__main__':
     test()
+    start = time.time()
+    def timeit(name):
+        print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
     starting_node=150250
-    adjacency = scipy.sparse.load_npz('./preproces/paper_author_biadjacency.npz')
+    adjacency = sparse.load_npz('./data/s2_processed/paper_author_biadjacency.npz')
     papers = pd.read_csv('./data/s2_processed/papers.csv', index_col=0)
     citations=np.array(papers['citations_2019'])
     downsample_papers=np.load('./input/downsampled_'+str(starting_node)+'.npy')
 
 
-    def timeit(name):
-        print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
 
-    simplices, cochains, signals_top = bipart2simpcochain(adijacency, citations, indices_x=downsample_papers, dimension=10)
+    simplices, cochains, signals_top = bipart2simpcochain(adjacency, citations, indices_x=downsample_papers, dimension=10)
     timeit('process')
     np.save('./input/'+str(starting_node)+'_cochains.npy', cochains)
     np.save('./input/'+str(starting_node)+'_simplices.npy', simplices)

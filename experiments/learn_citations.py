@@ -83,14 +83,14 @@ def main():
 
     logdir = sys.argv[2] ##output
     starting_node=sys.argv[3]
-    percenatge_missing_values=sys.argv[4]
+    percentage_missing_values=sys.argv[4]
     cuda = False
 
     topdim = 2
 
 
-    laplacians = np.load('%s/'+str(starting_node)+'_laplacians.npy' %(prefix),allow_pickle=True)
-    boundaries = np.load('%s/'+str(starting_node)+'_boundaries.npy'%(prefix),allow_pickle=True)
+    laplacians = np.load('{}/{}_laplacians.npy'.format(prefix,starting_node),allow_pickle=True)
+    boundaries = np.load('{}/{}_boundaries.npy'.format(prefix,starting_node),allow_pickle=True)
 
 
 
@@ -118,13 +118,13 @@ def main():
     print("Total number of parameters: %d" %(num_params))
 
 
-    masks_all_deg = np.load('%s/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_known_values.npy'%(prefix),allow_pickle=True) ## positive mask= indices that we keep ##1 mask #entries 0 degree
+    masks_all_deg = np.load('{}/{}_percentage_{}_known_values.npy'.format(prefix,starting_node,percentage_missing_values),allow_pickle=True) ## positive mask= indices that we keep ##1 mask #entries 0 degree
     masks=[list(masks_all_deg[i].values()) for i in range(len(masks_all_deg))]
 
     losslogf = open("%s/loss.txt" %(logdir), "w")
 
     cochain_target_alldegs = []
-    signal = np.load('%s/'+str(starting_node)+'_cochains.npy' %(prefix),allow_pickle=True)
+    signal = np.load('{}/{}_cochains.npy'.format(prefix,starting_node),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
         cochain_target = torch.zeros((batch_size, 1, len(raw_data[d])), dtype=torch.float, requires_grad = False)
@@ -134,7 +134,7 @@ def main():
         cochain_target_alldegs.append(cochain_target)
 
     cochain_input_alldegs = []
-    signal = np.load('%s/'+str(starting_node)+'_percentage_'+str(percenatge_missing_values)+'_input_damaged.npy'%(prefix),allow_pickle=True)
+    signal = np.load('{}/{}_percentage_{}_input_damaged.npy'.format(prefix,starting_node,percentage_missing_values),allow_pickle=True)
     raw_data=[list(signal[i].values()) for i in range(len(signal))]
     for d in range(0, topdim+1):
 
@@ -153,7 +153,7 @@ def main():
 
     print([float(len(masks[d]))/float(len(cochain_target_alldegs[d][0,0,:])) for d in range(0,2+1)])
 
-    for i in range(0, 1050):
+    for i in range(0, 1000):
         xs = [cochain_input.clone() for cochain_input in cochain_input_alldegs]
 
         optimizer.zero_grad()

@@ -75,13 +75,12 @@ def build_laplacians(boundaries):
 
 
 if __name__ == '__main__':
-
-    starting_node=150250
-    simplices=np.load('./input/'+str(starting_node)+'_simplices.npy', simplices)
-
+    start = time.time()
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
-
+        
+    starting_node=150250
+    simplices=np.load('./input/'+str(starting_node)+'_simplices.npy')
 
     boundaries=build_boundaries(simplices)
     laplacians=build_laplacians(boundaries)
