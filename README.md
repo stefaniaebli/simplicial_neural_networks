@@ -97,7 +97,7 @@ The already preprocesses data can be found in the folder ``` ./data/s2_processed
     ```       
     3.5 Artificially insert missing data on k-cochains
     ```sh
-       python ./input/s2_7_bipartite_to_downsampled.py
+       python ./input/s2_7_cochains_to_missingdata.py
     ```      
 4. **Run the experiments.**
 
