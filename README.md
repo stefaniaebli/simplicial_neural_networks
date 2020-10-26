@@ -51,10 +51,9 @@ For a local installation, follow the below instructions.
 
 ## Notebooks
 
-The below notebooks contain examples and experiments to play with the model.
+* [`demo_simplicial_processing.ipynb`]: get a taste of simplicial complexes.
 
-- coming soon.
-
+[`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/master/notebooks/demo_simplicial_processing.ipynb
 
 ## Reproducing the results of the paper
 
