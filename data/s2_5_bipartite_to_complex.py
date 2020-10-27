@@ -206,16 +206,13 @@ if __name__ == '__main__':
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
     starting_node=150250
-    adjacency = sparse.load_npz('./data/s2_processed/paper_author_biadjacency.npz')
-    papers = pd.read_csv('./data/s2_processed/papers.csv', index_col=0)
+    adjacency = sparse.load_npz('s2_2_bipartite_graph/paper_author_biadjacency.npz')
+    papers = pd.read_csv('s2_2_bipartite_graph/papers.csv', index_col=0)
     citations=np.array(papers['citations_2019'])
-    downsample_papers=np.load('./input/downsampled_'+str(starting_node)+'.npy')
-
-
-
+    downsample_papers=np.load('s2_3_collaboration_complex/downsampled_'+str(starting_node)+'.npy')
 
     simplices, cochains, signals_top = bipart2simpcochain(adjacency, citations, indices_x=downsample_papers, dimension=10)
     timeit('process')
-    np.save('./input/'+str(starting_node)+'_cochains.npy', cochains)
-    np.save('./input/'+str(starting_node)+'_simplices.npy', simplices)
+    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_cochains.npy', cochains)
+    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_simplices.npy', simplices)
     timeit('total')

@@ -44,17 +44,17 @@ For a local installation, follow the below instructions.
 ## Notebooks
 
 * [`demo_simplicial_processing.ipynb`]: get a taste of simplicial complexes.
-* [`s2_4_analysis.ipynb`]: analysis of the Semantic Scholar data.
+* [`s2_analysis.ipynb`]: analysis of the Semantic Scholar data.
 
-[`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/master/notebooks/demo_simplicial_processing.ipynb
-[`s2_4_analysis.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/master/data/s2_4_analysis.ipynb
+[`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/demo_simplicial_processing.ipynb
+[`s2_analysis.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/s2_analysis.ipynb
 
 ## Reproducing our results
 
 Run the below to train a SNN to impute missing data (citations) on the simplicial complex (which encodes collaborations between authors).
 
 ```sh
-python ./experiments/impute_citations.py ./input .experiments/output 150250 30
+python ./experiments/impute_citations.py ./data/s2_3_collaboration_complex .experiments/output 150250 30
 ```
 
 ## Data
@@ -67,35 +67,35 @@ The below steps will recreate them.
 
 1. Download the full archive of the [Open Research Corpus] from [Semantic Scholar], version 2018-05-03, which contains over 39 million published research papers in Computer Science, Neuroscience, and Biomedical.
     ```sh
-    wget -i https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/2018-05-03/manifest.txt -P data/s2_raw/
+    wget -i https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/2018-05-03/manifest.txt -P data/s2_1_raw/
     ```
-   This step populates the [`./data/s2_raw`](./data/s2_raw) folder.
+   This step populates the [`./data/s2_1_raw`](./data/s2_1_raw) folder.
 
 2. Create a bipartite graph, whose vertices are papers (39,219,709 of them) in one part and authors (12,862,455 of them) in the other.
    A paper is connected to all its co-authors, and an author is connected to all the papers they wrote, leading to 139,268,795 edges.
    A citation count (the number of times the paper was cited) is available for each paper (from 0 to 37,230 citations per paper).
     ```sh
     # Create a bipartite graph from Semantic Scholar.
-    python ./data/s2_1_corpus_to_bipartite.py
+    python s2_1_corpus_to_bipartite.py
     # Clean and downsample that bipartite graph.
-    python ./data/s2_2_downsample_bipartite.py
+    python s2_2_downsample_bipartite.py
     # Project the bipartite graph to a graph between authors.
-    python ./data/s2_3_bipartite_to_graphs.py
+    python s2_3_bipartite_to_graphs.py
     ```
-   Those steps populate the [`./data/s2_processed`](./data/s2_processed) folder.
+   Those steps populate the [`./data/s2_2_bipartite_graph`](./data/s2_2_bipartite_graph) folder.
 
 3. Build the collaboration complex (where each collaboration of authors is represented by a simplex) and citation cochains (which are the number of citations attributed to the collaborations).
     ```sh
     # Downsample the bipartite graph to have a connected simplicial complex.
-    python ./input/s2_4_bipartite_to_downsampled.py
+    python s2_4_bipartite_to_downsampled.py
     # From a bipartite graph to a simplicial complex with k-cochains.
-    python ./input/s2_5_bipartite_to_complex.py
+    python s2_5_bipartite_to_complex.py
     # From a simplicial complex to k-degree Laplacians.
-    python ./input/s2_6_complex_to_laplacians.py
+    python s2_6_complex_to_laplacians.py
     # Artificially insert missing data on k-cochains.
-    python ./input/s2_7_cochains_to_missingdata.py
+    python s2_7_cochains_to_missingdata.py
     ```
-   Those steps populate the [`./input`](./input) folder.
+   Those steps populate the [`./data/s2_3_collaboration_complex`](./s2_3_collaboration_complex) folder.
 
 ## License & citation
 

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 """
@@ -80,12 +79,12 @@ if __name__ == '__main__':
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
         
     starting_node=150250
-    simplices=np.load('./input/'+str(starting_node)+'_simplices.npy')
+    simplices=np.load('s2_3_collaboration_complex/'+str(starting_node)+'_simplices.npy')
 
     boundaries=build_boundaries(simplices)
     laplacians=build_laplacians(boundaries)
 
     timeit('process')
-    np.save('./input/'+str(starting_node)+'_laplacians.npy',laplacians)
-    np.save('./input/'+str(starting_node)+'_boundaries.npy',boundaries)
+    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_laplacians.npy',laplacians)
+    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_boundaries.npy',boundaries)
     timeit('total')

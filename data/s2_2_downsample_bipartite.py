@@ -154,22 +154,22 @@ def save(papers, authors, edges):
     print('saving:')
 
     print('  paper table: {:,} papers, {:,} features'.format(*papers.shape))
-    papers.to_csv('s2_processed/papers.csv')
+    papers.to_csv('s2_2_bipartite_graph/papers.csv')
     print('  edges table: {:,} edges'.format(edges.shape[0]))
-    edges.to_csv('s2_processed/paper_author_edges.csv', index=False)
+    edges.to_csv('s2_2_bipartite_graph/paper_author_edges.csv', index=False)
 
     print('  biadjacency matrix: {:,} papers, {:,} authors, {:,} edges'.format(
         *biadjacency.shape, biadjacency.nnz))
-    sparse.save_npz('s2_processed/paper_author_biadjacency.npz', biadjacency)
+    sparse.save_npz('s2_2_bipartite_graph/paper_author_biadjacency.npz', biadjacency)
 
     # Not used because redundant. Moreover, papers.csv has column names.
     # print('  paper feature matrix: {:,} papers, {:,} features'.format(*papers.shape))
-    # np.save('s2_processed/papers_features.npy', papers.values)
+    # np.save('s2_2_bipartite_graph/papers_features.npy', papers.values)
 
     # Features would need to be aggregated for authors.
     # The features are actually propagated done when constructing the collaboration complex.
     # print('author feature matrix: {:,} authors, {:,} features'.format(*authors.shape))
-    # np.save('s2_processed/authors_features.npy', authors.values)
+    # np.save('s2_2_bipartite_graph/authors_features.npy', authors.values)
 
 
 if __name__ == '__main__':
@@ -178,7 +178,7 @@ if __name__ == '__main__':
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
-    papers, edges = load('s2_processed/paper_author_full.pickle')
+    papers, edges = load('s2_2_bipartite_graph/paper_author_full.pickle')
     timeit('load')
     papers, edges = downsample(papers, edges)
     timeit('downsample')

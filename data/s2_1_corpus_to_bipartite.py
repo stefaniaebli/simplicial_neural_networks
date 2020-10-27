@@ -76,7 +76,7 @@ def count_citations(papers, years):
 
 def save(papers, edges):
     data = dict(edges=edges, papers=papers)
-    with open('s2_processed/paper_author_full.pickle', 'wb') as file:
+    with open('s2_2_bipartite_graph/paper_author_full.pickle', 'wb') as file:
         pickle.dump(data, file, pickle.HIGHEST_PROTOCOL)
 
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
-    papers, edges = process_papers('s2_raw/s2-corpus-*.gz')
+    papers, edges = process_papers('s2_1_raw/s2-corpus-*.gz')
     timeit('reading data')
     count_citations(papers, range(1994, 2024, 5))
     timeit('citations')

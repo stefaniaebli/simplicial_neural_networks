@@ -40,7 +40,7 @@ def starting_node_random_walk(bipartite,weights_x, min_weight=100, max_dim=10 ):
     max_dim : int
         maximum number of adjacent nodes in Y
 
-    Re./input/s2_4_bipartite_to_downsampled.pyturns
+    Returns
     -------
         start : starting node of the random walk
     """
@@ -138,9 +138,9 @@ if __name__ == '__main__':
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
-    adjacency_papers = sparse.load_npz('./data/s2_processed/papers_adjacency.npz')
-    adjacency = scipy.sparse.load_npz('./data/s2_processed/paper_author_biadjacency.npz')
-    papers = pd.read_csv('./data/s2_processed/papers.csv', index_col=0)
+    adjacency_papers = sparse.load_npz('s2_2_bipartite_graph/papers_adjacency.npz')
+    adjacency = scipy.sparse.load_npz('s2_2_bipartite_graph/paper_author_biadjacency.npz')
+    papers = pd.read_csv('s2_2_bipartite_graph/papers.csv', index_col=0)
     citations=np.array(papers['citations_2019'])
 
     starting_node=starting_node_random_walk(adjacency,weights_x=citations, min_weight=100, max_dim=10 )
@@ -148,5 +148,5 @@ if __name__ == '__main__':
     downsample= subsample_node_x(adjacency_papers,adjacency,weights_x=citations, min_weight=5, max_dim=10,length_walk=80)
 
     timeit('process')
-    np.save('./input/downsampled_'+str(starting_node)+'.npy',downsample)
+    np.save('s2_3_collaboration_complex/downsampled_'+str(starting_node)+'.npy',downsample)
     timeit('total')

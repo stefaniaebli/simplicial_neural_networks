@@ -21,7 +21,7 @@ def load(path):
     print(f'{bipartite.number_of_edges():,} edges in the bipartite graph')
     print(f'connected: {nx.is_connected(bipartite)}')
 
-    # nx.write_graphml(bipartite, 's2_processed/paper_author.graphml')
+    # nx.write_graphml(bipartite, 's2_2_bipartite_graph/paper_author.graphml')
 
     return bipartite
 
@@ -51,8 +51,8 @@ def project(bipartite):
 
 def save(graph_papers, graph_authors):
 
-    # nx.write_graphml(graph_papers, 's2_processed/papers.graphml')
-    # nx.write_graphml(graph_authors, 's2_processed/authors.graphml')
+    # nx.write_graphml(graph_papers, 's2_2_bipartite_graph/papers.graphml')
+    # nx.write_graphml(graph_authors, 's2_2_bipartite_graph/authors.graphml')
 
     adjacency_papers = nx.to_scipy_sparse_matrix(graph_papers, dtype=np.int32)
     adjacency_authors = nx.to_scipy_sparse_matrix(graph_authors, dtype=np.int32)
@@ -60,8 +60,8 @@ def save(graph_papers, graph_authors):
     print('adjacency matrix: {:,} papers, {:,} edges'.format(adjacency_papers.shape[0], adjacency_papers.nnz // 2))
     print('adjacency matrix: {:,} authors, {:,} edges'.format(adjacency_authors.shape[0], adjacency_authors.nnz // 2))
 
-    sparse.save_npz('s2_processed/papers_adjacency.npz', adjacency_papers)
-    sparse.save_npz('s2_processed/authors_adjacency.npz', adjacency_authors)
+    sparse.save_npz('s2_2_bipartite_graph/papers_adjacency.npz', adjacency_papers)
+    sparse.save_npz('s2_2_bipartite_graph/authors_adjacency.npz', adjacency_authors)
 
 
 if __name__ == '__main__':
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
 
-    bipartite = load('s2_processed/paper_author_biadjacency.npz')
+    bipartite = load('s2_2_bipartite_graph/paper_author_biadjacency.npz')
     timeit('load')
     graph_papers, graph_authors = project(bipartite)
     timeit('project')
