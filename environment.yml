@@ -1,4 +1,4 @@
-name: my_env
+name: snn
 channels:
   - anaconda
   - dglteam
