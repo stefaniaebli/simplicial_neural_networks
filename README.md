@@ -55,7 +55,7 @@ For a local installation, follow the below instructions.
 Run the below to train a SNN to impute missing data (citations) on the simplicial complex (which encodes collaborations between authors).
 
 ```sh
-python ./experiments/learn_citations.py ./input .experiments/output 150250 30
+python ./experiments/impute_citations.py ./input .experiments/output 150250 30
 ```
 
 ## Data
