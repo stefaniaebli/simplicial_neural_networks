@@ -54,7 +54,7 @@
 Run the below to train a SNN to impute missing data (citations) on the simplicial complex (which encodes collaborations between authors).
 
 ```sh
-python ./experiments/impute_citations.py ./data/s2_3_collaboration_complex .experiments/output 150250 30
+python ./experiments/impute_citations.py ./data/s2_3_collaboration_complex ./experiments/output 150250 30
 ```
 
 ## Data

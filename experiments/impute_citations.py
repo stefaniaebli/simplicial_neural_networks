@@ -7,9 +7,10 @@ import torch.utils.data as data
 import numpy as np
 import sys
 
+import sys
+sys.path.append('.')
 import scnn.scnn
 import scnn.chebyshev
-
 
 
 class MySCNN(nn.Module):
