@@ -25,7 +25,7 @@
 ## Installation
 
 [![Binder](https://mybinder.org/badge_logo.svg)][binder]
-&nbsp; Click the binder badge to play with the notebooks from your browser without installing anything.
+&nbsp; Click the binder badge to run the code from your browser without installing anything.
 
 [binder]: https://mybinder.org/v2/gh/stefaniaebli/simplicial_neural_networks/main?urlpath=lab
 
