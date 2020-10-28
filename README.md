@@ -61,7 +61,7 @@ python ./experiments/impute_citations.py ./data/s2_3_collaboration_complex .expe
 
 ## Data
 
-The data necessary to reproduce our experiment are found in the [`./data/s2_3_collaboration_complex`](./s2_3_collaboration_complex) folder.
+The data necessary to reproduce our experiment are found in the [`./data/s2_3_collaboration_complex`](./data/s2_3_collaboration_complex) folder.
 The below three stages will recreate them.
 
 [Semantic Scholar]: https://semanticscholar.org
@@ -98,7 +98,7 @@ The below three stages will recreate them.
     # Artificially insert missing data on k-cochains.
     python s2_7_cochains_to_missingdata.py
     ```
-   Those steps populate the [`./data/s2_3_collaboration_complex`](./s2_3_collaboration_complex) folder.
+   Those steps populate the [`./data/s2_3_collaboration_complex`](./data/s2_3_collaboration_complex) folder.
 
 ## License & citation
 
