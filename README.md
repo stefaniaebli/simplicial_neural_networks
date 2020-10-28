@@ -16,9 +16,11 @@
 
 * Paper: [`arXiv:2010.03633`][paper]
 * Poster: [Simplicial Neural Networks: Predicting Collaborations with Simplicial Complexes][poster]
+* Data: [`doi:10.5281/zenodo.4144319`][data]
 
 [paper]: https://arxiv.org/abs/2010.03633
 [poster]: https://www.dropbox.com/s/nwzbizjiunqk3g6/Ebli.pdf
+[data]: https://doi.org/10.5281/zenodo.4144319
 
 ## Installation
 
@@ -59,8 +61,8 @@ python ./experiments/impute_citations.py ./data/s2_3_collaboration_complex .expe
 
 ## Data
 
-The data necessary to reproduce our experiment are included in the repository.
-The below steps will recreate them.
+The data necessary to reproduce our experiment are found in the [`./data/s2_3_collaboration_complex`](./s2_3_collaboration_complex) folder.
+The below three stages will recreate them.
 
 [Semantic Scholar]: https://semanticscholar.org
 [Open Research Corpus]: https://api.semanticscholar.org/corpus
@@ -83,6 +85,7 @@ The below steps will recreate them.
     python s2_3_bipartite_to_graphs.py
     ```
    Those steps populate the [`./data/s2_2_bipartite_graph`](./data/s2_2_bipartite_graph) folder.
+   Alternatively, that processed data is available at [`doi:10.5281/zenodo.4144319`][data].
 
 3. Build the collaboration complex (where each collaboration of authors is represented by a simplex) and citation cochains (which are the number of citations attributed to the collaborations).
     ```sh

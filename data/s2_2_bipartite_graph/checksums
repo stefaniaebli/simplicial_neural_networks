@@ -1,0 +1,7 @@
+962eeea84d6fb258e312d9c486fa7ee9aa93a391  authors_adjacency.npz
+b2f976a3b528e95baf854d21952100345db952a8  paper_author_biadjacency.npz
+83498f9a826b7ec73bb37425c30a6c7672738ee9  paper_author_edges.csv
+0b8000e36196975504714b68392062cc3272c260  paper_author_full.pickle
+3bae01722418eddcec4fb0a6af6a0708b3e1f1b2  papers_adjacency.npz
+ddbd76fa8e00fa4b5af68dd03389154210c14f02  papers.csv
+339d0eb077e14cbbae1cd423e09621a5449c0cdb  papers_features.npy
