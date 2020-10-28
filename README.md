@@ -15,7 +15,7 @@
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 
 * Paper: [`arXiv:2010.03633`][paper]
-* Poster: [Simplicial Neural Networks: Predicting Collaborations with Simplicial Complexes][poster]
+* Poster: [`doi:10.5281/zenodo.4147037`][poster]
 * Data: [`doi:10.5281/zenodo.4144319`][data]
 
 [paper]: https://arxiv.org/abs/2010.03633
