@@ -148,5 +148,5 @@ if __name__ == '__main__':
     downsample= subsample_node_x(adjacency_papers,adjacency,weights_x=citations, min_weight=5, max_dim=10,length_walk=80)
 
     timeit('process')
-    np.save('s2_3_collaboration_complex/downsampled_'+str(starting_node)+'.npy',downsample)
+    np.save(f's2_3_collaboration_complex/{starting_node}_downsampled.npy', downsample)
     timeit('total')

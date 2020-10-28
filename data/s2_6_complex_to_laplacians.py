@@ -77,14 +77,14 @@ if __name__ == '__main__':
     start = time.time()
     def timeit(name):
         print('wall time ({}): {:.0f}s'.format(name, time.time() - start))
-        
+
     starting_node=150250
-    simplices=np.load('s2_3_collaboration_complex/'+str(starting_node)+'_simplices.npy')
+    simplices=np.load(f's2_3_collaboration_complex/{starting_node}_simplices.npy')
 
     boundaries=build_boundaries(simplices)
     laplacians=build_laplacians(boundaries)
 
     timeit('process')
-    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_laplacians.npy',laplacians)
-    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_boundaries.npy',boundaries)
+    np.save(f's2_3_collaboration_complex/{starting_node}_laplacians.npy', laplacians)
+    np.save(f's2_3_collaboration_complex/{starting_node}_boundaries.npy', boundaries)
     timeit('total')

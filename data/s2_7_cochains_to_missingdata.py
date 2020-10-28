@@ -158,15 +158,15 @@ if __name__ == '__main__':
     starting_node=150250
     percentage_missing_values=30
 
-    cochains=np.load('s2_3_collaboration_complex/'+str(starting_node)+'_cochains.npy')
-    simplices=np.load('s2_3_collaboration_complex/'+str(starting_node)+'_simplices.npy')
+    cochains = np.load(f's2_3_collaboration_complex/{starting_node}_cochains.npy')
+    simplices = np.load(f's2_3_collaboration_complex/{starting_node}_simplices.npy')
 
     missing_values=build_missing_values(simplices,percentage_missing_values=30,max_dim=10)
     damaged_dataset=build_damaged_dataset(cochains,missing_values,function=np.median)
     known_values=built_known_values(missing_values,simplices)
 
     timeit('process')
-    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_missing_values.npy',missing_values)
-    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_input_damaged.npy',damaged_dataset)
-    np.save('s2_3_collaboration_complex/'+str(starting_node)+'_percentage_'+str(percentage_missing_values)+'_known_values.npy',known_values)
+    np.save(f's2_3_collaboration_complex/{starting_node}_percentage_{percentage_missing_values}_missing_values.npy', missing_values)
+    np.save(f's2_3_collaboration_complex/{starting_node}_percentage_{percentage_missing_values}_input_damaged.npy', damaged_dataset)
+    np.save(f's2_3_collaboration_complex/{starting_node}_percentage_{percentage_missing_values}_known_values.npy', known_values)
     timeit('total')
