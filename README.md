@@ -7,7 +7,7 @@
 [Gard Spreemann]: https://www.epfl.ch/labs/hessbellwald-lab/
 
 > We present simplicial neural networks (SNNs), a generalization of graph neural networks to data that live on a class of topological spaces called [simplicial complexes].
-> These are natural multi-dimensional extensions of graphs that encode not only pairwise relationships but also higher-order interactions between vertices—allowing us to consider richer data, including vector fields and nn-fold collaboration networks.
+> These are natural multi-dimensional extensions of graphs that encode not only pairwise relationships but also higher-order interactions between vertices—allowing us to consider richer data, including vector fields and n-fold collaboration networks.
 > We define an appropriate notion of convolution that we leverage to construct the desired convolutional neural networks.
 > We test the SNNs on the task of imputing missing data on coauthorship complexes.
 
