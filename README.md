@@ -24,12 +24,10 @@
 
 ## Installation
 
-[![Binder](https://mybinder.org/badge_logo.svg)][binder_lab]
+[![Binder](https://mybinder.org/badge_logo.svg)][binder]
 &nbsp; Click the binder badge to play with the notebooks from your browser without installing anything.
 
-[binder_lab]: https://mybinder.org/v2/gh/stefaniaebli/simplicial_neural_networks/main
-
-For a local installation, follow the below instructions.
+[binder]: https://mybinder.org/v2/gh/stefaniaebli/simplicial_neural_networks/main?urlpath=lab
 
 1. Clone this repository.
     ```sh
