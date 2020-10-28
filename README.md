@@ -19,7 +19,7 @@
 * Data: [`doi:10.5281/zenodo.4144319`][data]
 
 [paper]: https://arxiv.org/abs/2010.03633
-[poster]: https://doi.org/10.5281/zenodo.4146878
+[poster]: https://doi.org/10.5281/zenodo.4147037
 [data]: https://doi.org/10.5281/zenodo.4144319
 
 ## Installation
