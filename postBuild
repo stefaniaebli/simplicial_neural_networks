@@ -1,0 +1,8 @@
+#!/bin/sh
+cd data/s2_2_bipartite_graph
+curl -O https://zenodo.org/record/4144319/files/papers_features.npy
+curl -O https://zenodo.org/record/4144319/files/papers_adjacency.npz
+curl -O https://zenodo.org/record/4144319/files/papers.csv
+curl -O https://zenodo.org/record/4144319/files/paper_author_edges.csv
+curl -O https://zenodo.org/record/4144319/files/paper_author_biadjacency.npz
+curl -O https://zenodo.org/record/4144319/files/authors_adjacency.npz
