@@ -45,9 +45,11 @@
 
 * [`demo_simplicial_processing.ipynb`]: get a taste of simplicial complexes.
 * [`s2_analysis.ipynb`]: analysis of the Semantic Scholar data.
+* [s2_bipartite_to_simplex_cochains.ipynb]: build the collaboration complex with citation cochains and adding misisng data
 
 [`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/demo_simplicial_processing.ipynb
 [`s2_analysis.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/s2_analysis.ipynb
+[`s2_bipartite_to_simplex_cochains.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/s2_bipartite_to_simplex_cochains.ipynb
 
 ## Reproducing our results
 
