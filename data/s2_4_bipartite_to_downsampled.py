@@ -49,7 +49,7 @@ def starting_node_random_walk(bipartite,weights_x, min_weight=100, max_dim=10 ):
     seeds_papers=[]
     for j, el in enumerate(rows[np.where(weights_x>100)]):
         if len(el)<max_dim:
-            print('Paper {} has {} authors and {} citations'.format(np.where(weights_x>100)[0][j],len(el),weights_x[np.where(weights_x>100)][j]))
+            #print('Paper {} has {} authors and {} citations'.format(np.where(weights_x>100)[0][j],len(el),weights_x[np.where(weights_x>100)][j]))
             seeds_papers.append(np.where(weights_x>100)[0][j])
     copy_seed=np.copy(seeds_papers)
     shuffle(copy_seed)
@@ -128,7 +128,7 @@ def subsample_node_x(adjaceny_graph_x,bipartite,weights_x, min_weight=5, max_dim
         final=np.concatenate((p,p1))
         p=np.unique(final)
         list_seeds.append(new_start)
-        print(iterations)
+       
     return p
 
 

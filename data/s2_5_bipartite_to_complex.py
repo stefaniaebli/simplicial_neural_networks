@@ -148,6 +148,16 @@ def bipart2simpcochain(bipartite,weights_x,indices_x=None,function=np.sum,dimens
     return simplices, cochains,signals_top
 
 
+def build_features(simplices, cochains):
+    r"""Build feature matrices from cochains."""
+    n_features = len([next(iter(cochains[0].values()))])
+    features = [np.empty((len(cochain), n_features)) for cochain in cochains]
+    for dim in range(len(cochains)):
+        for simplex, cochain in cochains[dim].items():
+            idx = simplices[dim][simplex]
+            features[dim][idx] = np.array(cochain)
+    return features
+
 
 def test():
     r"""Test the transformation of a bipartite graph to a collaboration complex."""
