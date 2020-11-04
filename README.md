@@ -37,7 +37,7 @@
 
 2. Create the environment.
     ```sh
-    conda env create -f environment.yml
+    CONDA_CHANNEL_PRIORITY=flexible conda env create -f environment.yml
     conda activate snn
     ```
 
