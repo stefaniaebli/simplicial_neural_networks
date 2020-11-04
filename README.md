@@ -27,7 +27,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)][binder]
 &nbsp; Click the binder badge to run the code from your browser without installing anything.
 
-[binder]: https://mybinder.org/v2/gh/stefaniaebli/simplicial_neural_networks/main?urlpath=lab
+[binder]: https://mybinder.org/v2/gh/stefaniaebli/simplicial_neural_networks/outputs?urlpath=lab
 
 1. Clone this repository.
     ```sh
@@ -45,11 +45,11 @@
 
 * [`demo_simplicial_processing.ipynb`]: get a taste of simplicial complexes.
 * [`s2_analysis.ipynb`]: analysis of the Semantic Scholar data.
-* [`s2_bipartite_to_simplex_cochains.ipynb`]: build the collaboration complex with citation cochains and adding misisng data
+* [`s2_bipartite_to_simplex_cochains.ipynb`]: build the collaboration complex with citation cochains.
 
-[`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/demo_simplicial_processing.ipynb
-[`s2_analysis.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/s2_analysis.ipynb
-[`s2_bipartite_to_simplex_cochains.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/main/notebooks/s2_bipartite_to_simplex_cochains.ipynb
+[`demo_simplicial_processing.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/outputs/notebooks/demo_simplicial_processing.ipynb
+[`s2_analysis.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/outputs/notebooks/s2_analysis.ipynb
+[`s2_bipartite_to_simplex_cochains.ipynb`]: https://nbviewer.jupyter.org/github/stefaniaebli/simplicial_neural_networks/blob/outputs/notebooks/s2_bipartite_to_simplex_cochains.ipynb
 
 ## Reproducing our results
 
