@@ -6,3 +6,5 @@ curl -O https://zenodo.org/record/4144319/files/papers.csv
 curl -O https://zenodo.org/record/4144319/files/paper_author_edges.csv
 curl -O https://zenodo.org/record/4144319/files/paper_author_biadjacency.npz
 curl -O https://zenodo.org/record/4144319/files/authors_adjacency.npz
+# Big (~12 GB) and not necessary for most investigations.
+#curl -O https://zenodo.org/record/4144319/files/paper_author_full.pickle
