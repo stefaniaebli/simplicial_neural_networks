@@ -15,11 +15,11 @@
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 
 * Paper: [`arXiv:2010.03633`][paper]
-* Poster: [`doi:10.5281/zenodo.4147037`][poster]
+* Poster: [`doi:10.5281/zenodo.4309827`][poster]
 * Data: [`doi:10.5281/zenodo.4144319`][data]
 
 [paper]: https://arxiv.org/abs/2010.03633
-[poster]: https://doi.org/10.5281/zenodo.4147037
+[poster]: https://doi.org/10.5281/zenodo.4309827
 [data]: https://doi.org/10.5281/zenodo.4144319
 
 ## Installation
