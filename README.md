@@ -106,12 +106,13 @@ The content of this repository is released under the terms of the [MIT license](
 Please cite our paper if you use it.
 
 ```
-@article{simplicial_nn,
+@article{snn,
   title = {Simplicial Neural Networks},
-  author = {Ebli, Stefania and Defferrard, Micha\"el and Spreemann, Gard},
+  author = {Ebli, Stefania and Defferrard, Michaël and Spreemann, Gard},
+  booktitle = {Topological Data Analysis and Beyond workshop at NeurIPS},
   year = {2020},
-  archivePrefix = {arXiv},
-  eprint = {2010.0363},
-  url = {https://arxiv.org/abs/2010.0363},
+  archiveprefix = {arXiv},
+  eprint = {2010.03633},
+  url = {https://arxiv.org/abs/2010.03633},
 }
 ```
