@@ -14,7 +14,7 @@
 [PyTorch]: https://pytorch.org
 [simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 
-* Paper: [`arXiv:2010.03633`][paper]
+* Paper: [`arXiv:2010.03633`][paper] ([latex source](https://github.com/stefaniaebli/paper-snn-neurips2020tda))
 * Poster: [`doi:10.5281/zenodo.4309827`][poster]
 * Data: [`doi:10.5281/zenodo.4144319`][data]
 
